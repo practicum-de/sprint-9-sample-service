@@ -12,6 +12,10 @@ image:
 
 containerPort: 8080
 
+config:
+  EXAMPLE_ENV1: "value"
+  EXAMPLE_ANOTHER_ENV2: "value"
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
