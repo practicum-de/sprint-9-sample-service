@@ -2,6 +2,6 @@ asyncio
 APScheduler
 confluent_kafka
 flask
-kafka-python
 psycopg-binary
 pydantic
+redis

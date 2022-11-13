@@ -5,6 +5,7 @@
 replicaCount: 1
 
 image:
+  # Link to your container registry. You will launch it in Yandex Cloud.
   repository: cr.yandex/...
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.

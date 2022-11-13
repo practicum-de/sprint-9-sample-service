@@ -10,19 +10,19 @@ class AppConfig:
 
     def __init__(self) -> None:
 
-        self.kafka_host = str(os.getenv('KAFKA_HOST'))
-        self.kafka_port = int(str(os.getenv('KAFKA_PORT')))
-        self.kafka_consumer_username = str(os.getenv('KAFKA_CONSUMER_USERNAME'))
-        self.kafka_consumer_password = str(os.getenv('KAFKA_CONSUMER_PASSWORD'))
-        self.kafka_consumer_group = str(os.getenv('KAFKA_CONSUMER_GROUP'))
-        self.kafka_consumer_topic = str(os.getenv('KAFKA_SOURCE_TOPIC'))
-        self.kafka_producer_username = str(os.getenv('KAFKA_CONSUMER_USERNAME'))
-        self.kafka_producer_password = str(os.getenv('KAFKA_CONSUMER_PASSWORD'))
-        self.kafka_producer_topic = str(os.getenv('KAFKA_DESTINATION_TOPIC'))
+        self.kafka_host = str(os.getenv('KAFKA_HOST') or "")
+        self.kafka_port = int(str(os.getenv('KAFKA_PORT')) or 0)
+        self.kafka_consumer_username = str(os.getenv('KAFKA_CONSUMER_USERNAME') or "")
+        self.kafka_consumer_password = str(os.getenv('KAFKA_CONSUMER_PASSWORD') or "")
+        self.kafka_consumer_group = str(os.getenv('KAFKA_CONSUMER_GROUP') or "")
+        self.kafka_consumer_topic = str(os.getenv('KAFKA_SOURCE_TOPIC') or "")
+        self.kafka_producer_username = str(os.getenv('KAFKA_CONSUMER_USERNAME') or "")
+        self.kafka_producer_password = str(os.getenv('KAFKA_CONSUMER_PASSWORD') or "")
+        self.kafka_producer_topic = str(os.getenv('KAFKA_DESTINATION_TOPIC') or "")
 
-        self.redis_host = str(os.getenv('REDIS_HOST'))
-        self.redis_port = int(str(os.getenv('REDIS_PORT')))
-        self.redis_password = str(os.getenv('REDIS_PASSWORD'))
+        self.redis_host = str(os.getenv('REDIS_HOST') or "")
+        self.redis_port = int(str(os.getenv('REDIS_PORT')) or 0)
+        self.redis_password = str(os.getenv('REDIS_PASSWORD') or "")
 
     def kafka_producer(self):
         return KafkaProducer(
