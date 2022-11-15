@@ -1,0 +1,12 @@
+FROM python:3.10
+
+RUN apt-get update -y
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+WORKDIR /src
+ENTRYPOINT ["python"]
+
+CMD ["app.py"]

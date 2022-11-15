@@ -1,0 +1,8 @@
+.env
+
+.vscode
+logs
+YandexInternalRootCA.crt
+
+__pycache__/
+.mypy_cache
