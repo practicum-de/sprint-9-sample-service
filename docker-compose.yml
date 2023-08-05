@@ -1,12 +1,12 @@
 version: "3.9"
 
 services:
-  sample_service:
+  stg-service:
     build:
-      context: ./sample
+      context: ./service_stg
       network: host
-    image: sample_service:local
-    container_name: sample_service_container
+    image: stg_service:local
+    container_name: stg_service_container
     environment:
       FLASK_APP: ${SAMPLE_SERVICE_APP_NAME:-sample_service}
       DEBUG: ${SAMPLE_SERVICE_DEBUG:-True}
@@ -22,7 +22,14 @@ services:
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
       REDIS_PASSWORD: ${REDIS_PASSWORD}
+
+      PG_WAREHOUSE_HOST: ${PG_WAREHOUSE_HOST}
+      PG_WAREHOUSE_PORT: ${PG_WAREHOUSE_PORT}
+      PG_WAREHOUSE_DBNAME: ${PG_WAREHOUSE_DBNAME}
+      PG_WAREHOUSE_USER: ${PG_WAREHOUSE_USER}
+      PG_WAREHOUSE_PASSWORD: ${PG_WAREHOUSE_PASSWORD}
+      
     network_mode: "bridge"
     ports:
-      - "5101:5000"
+      - "5011:5000"
     restart: unless-stopped

@@ -1,5 +1,26 @@
-# Воспользуемся официальным образом для запуска python.
+# import python.
 FROM python:3.10
+
+# kafka arguments
+ARG KAFKA_HOST
+ARG KAFKA_PORT
+ARG KAFKA_CONSUMER_USERNAME
+ARG KAFKA_CONSUMER_PASSWORD
+ARG KAFKA_CONSUMER_GROUP
+ARG KAFKA_SOURCE_TOPIC
+ARG KAFKA_DESTINATION_TOPIC
+
+# redis arguments
+ARG REDIS_HOST
+ARG REDIS_PORT
+ARG REDIS_PASSWORD
+
+# postgresql arguments
+ARG PG_WAREHOUSE_HOST
+ARG PG_WAREHOUSE_PORT
+ARG PG_WAREHOUSE_DBNAME
+ARG PG_WAREHOUSE_USER
+ARG PG_WAREHOUSE_PASSWORD
 
 # Обновим компоненты в контейнере.
 RUN apt-get update -y
