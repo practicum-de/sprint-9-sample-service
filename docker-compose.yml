@@ -3,7 +3,7 @@ version: "3.9"
 services:
   stg-service:
     build:
-      context: ./service_stg
+      context: ./src
       network: host
     image: stg_service:local
     container_name: stg_service_container

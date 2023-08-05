@@ -26,10 +26,11 @@ ARG PG_WAREHOUSE_PASSWORD
 RUN apt-get update -y
 
 # Копируем все файлы в контейнер.
-COPY . .
+COPY . src
 
 # Запускаем установку зависимостей.
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r src/requirements.txt
 
 # Устанавливаем сертификат для подключения к ресурсам в Яндекс Облаке.
 RUN mkdir -p /crt

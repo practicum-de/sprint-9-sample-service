@@ -4,7 +4,7 @@ from logging import Logger
 
 from lib.kafka_connect import KafkaConsumer, KafkaProducer
 from lib.redis import RedisClient
-from stg_loader.repository import StgRepository
+from stg_loader.repository.stg_repository import StgRepository
 
 
 class StgMessageProcessor:
@@ -22,6 +22,9 @@ class StgMessageProcessor:
         self._logger.info(f"{datetime.utcnow()}: START")
         while True:
             kafka_msg = self._consumer.consume()
+            if not kafka_msg:
+                self._logger.info("No message")
+                break
             try:
                 payload = kafka_msg['payload']
                 user_id = payload['user']['id']
@@ -62,6 +65,8 @@ class StgMessageProcessor:
                                 'name': order['name'],
                                 'category': menu_position['category']
                             })
+
+                self._producer.product(output_message)
 
             except KeyError:
                 continue
